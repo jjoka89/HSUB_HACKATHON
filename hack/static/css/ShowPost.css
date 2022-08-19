@@ -1,0 +1,107 @@
+.BoardDetailWrapper{
+    /* border: 1px solid black; */
+    position: relative;
+    width: 90%;
+    height: 100%;
+    margin: 0px auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    
+}
+.BoardDetailHeader{
+    width: auto;
+    min-height: 60px;
+}
+
+.BoardDetailHeader > h1{
+    display: inline;
+    margin-top: 30px;
+    margin-left: 20px;
+}
+.BoardDetailHeader > span {
+    margin-top: 25px;
+    margin-bottom: 20px;
+    margin-right: 5px;
+    float: right;
+    
+}
+.BoardDetailHeader > input{
+    width: 300px;
+    margin-top: 25px;
+    margin-bottom: 20px;
+    float: right;
+    font-size: large;
+}
+
+.BoardDetail{
+    border: 1px solid black;
+    min-height: 100vw;
+    padding: 20px;
+}
+
+.BoardDetail> .title{
+    border: 1px solid black;
+    min-height: 10vw;
+    text-align: center;
+}
+.BoardDetail> .content{
+    border: 1px solid black;
+    min-height: 60vw;
+    margin-bottom: 5px;
+}
+
+
+
+.BoardDetail> .replDiv{
+    padding: 10px;
+    border: 1px solid black;
+    min-height: 30vw;
+}
+
+.BoardDetail > .replDiv > .commentCount{
+    border: 1px solid black;
+    display: inline;
+    font-size: large;
+    margin: 5px;
+}
+
+.BoardDetail > .replDiv > .like{
+    border: 1px solid black;
+}
+
+.BoardDetail > .replDiv > .comment{
+    border: 1px solid black;
+    margin: 10px;
+    padding: 10px;
+    width: auto;
+    height: auto;
+}
+
+.BoardFooter{
+    border: 1px solid black;
+    min-height: 30px;
+    padding: 30px;
+    
+}
+.BoardFooter>form{
+    all: unset;
+}
+
+.BoardFooter >form>textarea{
+    width: 100%;
+
+}
+.BoardFooter >form> button{
+    float: right;
+    margin-bottom: 5px;
+}
+
+.BoardPaging{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 0px auto;
+    width: 200px;
+    margin-top: 20px;
+}
+

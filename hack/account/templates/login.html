@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'account/css/login.css' %}">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="{% static 'board/css/index_style.css' %}" rel="stylesheet">
+    <title>LOGIN</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Single+Day&family=Uchen&display=swap');
+    </style>
+</head>
+
+<body>
+    <div class="top">
+        <header class="text-gray-600 body-font">
+            <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+            <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+                <span class="ml-3 text-xl"><a href="{% url 'mainpage'%}">UNICOM</a></span></a>
+            <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+                {% if request.user.is_authenticated %}
+                <a class="mr-5 hover:text-gray-900" href="{% url 'logout' %}">LOGOUT</a>
+                <a class="mr-5 hover:text-gray-900" href="{% url 'myPage' %}">MYPAGE</a>
+                {%else%}
+                <a class="mr-5 hover:text-gray-900" href="{% url 'login' %}">LOGIN</a>
+                <a class="mr-5 hover:text-gray-900" href="{% url 'join' %}">JOIN</a>
+                {%endif%}
+            </nav>
+            </div>
+        </header>
+
+        <div class="loginArea">
+            <div class="form">
+                <form action="" class="loginForm" method="POST">
+                    {% csrf_token %}
+
+                    <!-- <input type="email" name="email" id="inputEmail" placeholder="email" required="required"/> -->
+                    <input type="text" name="username" id="inputUsername" placeholder="userID" required="required" />
+                    <input type="password" name="password" id="inputPassword" placeholder="password" required="required" />
+                    {% for field in login_form %}
+                    <p>
+                        {% for error in field.errors %}
+                        <p style="color:red">{{error }}</p>
+                    {%endfor%}
+                    </p>
+                    {%endfor%}
+                    {% if login_form.non_field_errors %}
+                    <div style="color:red">
+                        <p>{{login_form.non_field_errors}}</p>
+                    </div>
+                    {% endif %}
+
+                    <button input type="submit">로그인</button>
+                    <p class="message">Not registered? <a href="{% url 'join' %}">Create an acconut</a></p>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    
+</body>
+
+</html>

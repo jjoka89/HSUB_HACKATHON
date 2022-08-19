@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+.mainFont {
+    font-family: Do Hyeon;
+}
+
+
+.searchBox {
+    display:flex;
+    justify-content: center;
+    align-items:flex-end;
+}
+
+.search {
+    position: relative;
+    width: 300px;
+  }
+  
+  input {
+    width: 100%;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+  
+  /* img {
+    position : absolute;
+    width: 17px;
+    top: 10px;
+    right: 12px;
+    margin: 0;
+  } */
+
+.subCateBtn {
+    background-color: rgba(216, 216, 216, 0.7);
+    height: 240px;
+    width: 150px;
+    text-align: center;
+    display: block;
+    border-radius: 5px;
+    padding: 10px;
+    list-style: none;
+    margin: 10px;
+    font-family: Do Hyeon;
+    font-size: 25px;
+    color: white;
+    display: none;
+}
+
+.dim {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.0);
+    color: rgba(0, 0, 0, 0.0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.iconOne {
+    background-image: url("./assets/1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-size: 100% 100%;
+}
+
+.iconTwo {
+    background-image: url("./assets/2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-size: 100% 100%;
+}
+.iconThree {
+    background-image: url("./assets/3.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-size: 100% 100%;
+}
+.iconFour {
+    background-image: url("./assets/4.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-size: 100% 100%;
+}
+.iconFive {
+    background-image: url("./assets/5.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-size: 100% 100%;
+}
+.iconSix {
+    background-image: url("./assets/6.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-size: 100% 100%;
+}
+
+.dim:hover{
+    background-color: rgba(216, 216, 216, 0.7);
+    transition-duration: 300ms;
+    font-size: 20px;
+    font-family: "Do Hyeon";
+    color: black;
+}
+
+.boardImg {
+	width: 83.33333%;
+    height: 400px;
+    margin: 0 auto;
+    padding-top: 50px;
+    justify-content:space-around;
+    background-image: url("./assets/backBoard.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
+}
+
+
+#ulTable > li:first-child > ul > li {
+    /* background-color:#c9c9c9; */
+    font-weight:bold;
+    text-align:center;
+    /* border-radius: 10px; */
+}
+
+#ulTable > li > ul {
+    clear:both;
+    padding:0px auto;
+    position:relative;
+    min-width:40px;
+    height: 30px;
+/*     border-bottom:1px solid silver; */
+}
+
+.tableCate {
+    border-radius: 20px;
+    background-color: silver;
+
+}
+#ulTable > li > ul > li { 
+    float:left;
+    font-size:10pt;
+    vertical-align:baseline;
+    font-family: 'Noto Sans KR', sans-serif;
+}    
+
+#ulTable > li > ul > li:first-child               {width:10%;} /*No 열 크기*/
+#ulTable > li > ul > li:first-child +li           {width:45%;} /*제목 열 크기*/
+#ulTable > li > ul > li:first-child +li+li        {width:20%;} /*작성일 열 크기*/
+#ulTable > li > ul > li:first-child +li+li+li     {width:15%;} /*작성자 열 크기*/
+#ulTable > li > ul > li:first-child +li+li+li+li{width:10%;} /*조회수 열 크기*/
+
+.buttonWrap{
+    display: flex;
+    align-items: right;
+    justify-content: right;
+    padding-right: 230px;
+}
+
+.buttonWrite{
+    
+    width: 140px;
+    height: 45px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    margin: 20px;
+    }
+
+    .buttonWrite:hover {
+        background-color: #48e63acf;
+        box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+        color: #fff;
+        transform: translateY(-7px);
+    }
+
+    .buttonLike{
+        width: 140px;
+        height: 45px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 2.5px;
+        font-weight: 500;
+        color: #000;
+        background-color: #fff;
+        border: none;
+        border-radius: 45px;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease 0s;
+        cursor: pointer;
+        outline: none;
+        margin-top: 20px;
+        }
+
+        .buttonLike:hover {
+            background-color: #48e63acf;
+            box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+            color: #fff;
+            transform: translateY(-7px);
+        }
+    
+    .buttonMywrite{
+        width: 140px;
+        height: 45px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 2.5px;
+        font-weight: 500;
+        color: #000;
+        background-color: #fff;
+        border: none;
+        border-radius: 45px;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease 0s;
+        cursor: pointer;
+        outline: none;
+        margin-top: 20px;
+        margin-left: 20px;
+        }
+
+        .buttonMywrite:hover {
+        background-color: #48e63acf;
+        box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+        color: #fff;
+        transform: translateY(-7px);
+        }
+
+.paging {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    list-style: none;
+}
+
+.paging li a{
+    margin: 10px;
+}
+
+.major_detail {
+    padding-right: 100px;
+}
+
+.more_detail {
+    font-family: 'Do Hyeon', sans-serif;
+    text-align: center;
+    font-size: xx-large;
+    margin: 50px;
+    font-weight: bold;
+    color: #fff;
+
+}
+
+.more_detail a {
+    margin: 30px;
+}

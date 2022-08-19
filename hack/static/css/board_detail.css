@@ -1,0 +1,95 @@
+.BoardDetailWrapper{
+    /* border: 1px solid black; */
+    position: relative;
+    width: 90%;
+    height: 100vw;
+    margin: 0px auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    
+}
+.BoardDetailHeader{
+    width: auto;
+    min-height: 60px;
+}
+
+.BoardDetailHeader > h1{
+    display: inline;
+    margin-top: 30px;
+    margin-left: 20px;
+}
+.BoardDetailHeader > span {
+    margin-top: 25px;
+    margin-bottom: 20px;
+    margin-right: 5px;
+    float: right;
+    
+}
+.BoardDetailHeader > input{
+    width: 300px;
+    margin-top: 25px;
+    margin-bottom: 20px;
+    float: right;
+    font-size: large;
+}
+
+.BoardDetail{
+    border: 1px solid black;
+    min-height: 80%;
+    padding: 20px;
+}
+
+.BoardDetail>ul{
+    all: unset;
+}
+
+
+.BoardDetail > ul> li{
+    border: 1px solid rgb(150, 145, 145);   
+    margin: 10px;
+    padding: 10px;
+    list-style-type: none;
+    font-size: 20px;
+    line-height:20px;
+    font-weight: 200;
+    cursor: pointer;
+    color: #000000;
+    font-weight: bold;
+}
+
+.BoardDetail> ul > li:hover{
+    color: rgb(214, 161, 161);
+}
+
+.BoardDetail >ul> li:active{
+    color: rgb(184, 48, 48);
+}
+
+.search{
+}
+
+.searchIcon{
+
+}
+
+.writeBtn{
+
+}
+
+.BoardFooter{
+    border: 1px solid black;
+    min-height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+}
+
+.BoardPaging{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 0px auto;
+    margin-top: 5px;
+    width: 200px;
+    
+}

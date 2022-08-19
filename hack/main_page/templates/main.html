@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="{% static 'board/css/index_style.css' %}" rel="stylesheet">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+      .boardImg {
+        width: 83.33333%;
+          height: 400px;
+          margin: 0 auto;
+          padding-top: 50px;
+          padding-left: 50px;
+          justify-content:space-around;
+          background-image: url("{% static 'board/assets/backBoard.png' %}");
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: 100% 100%;
+          display: flex;
+      }
+      .iconOne {
+        background-image: url("{% static 'board/assets/1.png' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-size: 110% 100%;
+    }
+    
+    .iconTwo {
+        background-image: url("{% static 'board/assets/2.png' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-size: 100% 100%;
+    }
+    .iconThree {
+        background-image: url("{% static 'board/assets/3.png' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-size: 100% 100%;
+    }
+    .iconFour {
+        background-image: url("{% static 'board/assets/4.png' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-size: 100% 100%;
+    }
+    .iconFive {
+        background-image: url("{% static 'board/assets/5.png' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-size: 100% 100%;
+    }
+    .iconSix {
+        background-image: url("{% static 'board/assets/6.png' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-size: 100% 100%;
+    }
+      </style>
+</head>
+<body>
+  <header class="text-gray-600 body-font">
+    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+      <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+        <!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+        </svg> -->
+        <span class="ml-3 text-xl">
+            <a href="{% url 'mainpage'%}">UNICOM</a>
+        </span>
+      </a>
+      <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+        {% if request.user.is_authenticated %}
+          <a class="mr-5 hover:text-gray-900" href="{% url 'logout' %}">LOGOUT</a>
+          <a class="mr-5 hover:text-gray-900" href="{% url 'myPage' %}">MYPAGE</a>
+        {%else%}
+          <a class="mr-5 hover:text-gray-900" href="{% url 'login' %}">LOGIN</a>
+          <a class="mr-5 hover:text-gray-900" href="{% url 'join' %}">JOIN</a>
+        {%endif%}
+      </nav>
+    </div>
+  </header>
+
+      <section class="text-gray-600 body-font">
+        <div class="boardImg flex">
+          <div class="searchBox mg-0 mg-auto h-64 w-2/5">
+            <div class="search">
+              <form class="form-inline my-2 my-lg-0" action="{% url 'search' %}" method="post">
+                {% csrf_token %}
+                <input class="form-control mr-sm-2" type="search" name="q" value="{{q}}">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png"></button>
+              </form>
+            </div>
+          </div>
+          <div>
+            
+            <div id = "myDiv1" class = "subCateBtn">
+              <li><a href="./board.html">경제학과</a></li>
+              <li><a href="">경영학과</a></li>
+              <li><a href="">금융학과</a></li>
+              <li><a href="">회계학과</a></li>
+              <li><a href="">무역학과</a></li>
+              <li><a href="">보험학과</a></li>
+            </div>
+
+            <div id = "myDiv2" class = "subCateBtn">
+              <li><a href="">물리학과</a></li>
+              <li><a href="">수학과</a></li>
+              <li><a href="">천문학과</a></li>
+              <li><a href="">생물학과</a></li>
+              <li><a href="">식품영양학과</a></li>
+              <li><a href="">통계학과</a></li>
+            </div>
+
+            <div id = "myDiv3" class = "subCateBtn">
+              <li><a href="">의예과</a></li>
+              <li><a href="">간호학과</a></li>
+              <li><a href="">치의예과</a></li>
+              <li><a href="">치위생학과</a></li>
+              <li><a href="">물리치료학과</a></li>
+              <li><a href="">응급구조학과</a></li>
+            </div>
+            
+            <div id = "myDiv4" class = "subCateBtn">
+              {% for category in categories %}
+                {% if category.name == "기계공학과" %}
+                  <li><a href="{{ category.get_absolute_url }}">{{category}}</a></li>
+                {% endif %}
+                {% if category.name == "컴퓨터공학과" %}
+                  <li><a href="{{ category.get_absolute_url }}">{{category}}</a></li>
+                {% endif %}
+                {% if category.name == "전자공학과" %}
+                  <li><a href="{{ category.get_absolute_url }}">{{category}}</a></li>
+                {% endif %}
+                {% if category.name == "건축공학과" %}
+                  <li><a href="{{ category.get_absolute_url }}">{{category}}</a></li>
+                {% endif %}
+                {% if category.name == "산업공학과" %}
+                  <li><a href="{{ category.get_absolute_url }}">{{category}}</a></li>
+                {% endif %}
+                {% if category.name == "토목공학과" %}
+                  <li><a href="{{ category.get_absolute_url }}">{{category}}</a></li>
+                {% endif %}
+              {% endfor %}
+            </div>
+
+            <div id = "myDiv5" class = "subCateBtn">
+              <li><a href="">기계공학과</a></li>
+              <li><a href="">전자공학과</a></li>
+              <li><a href="">컴퓨터공학과</a></li>
+              <li><a href="">건축공학과</a></li>
+              <li><a href="">산업공학과</a></li>
+              <li><a href="">토목공학과</a></li>
+            </div>
+
+            <div id = "myDiv6" class = "subCateBtn">
+              <li><a href="">실용음악과</a></li>
+              <li><a href="">디자인학과</a></li>
+              <li><a href="">영화영상학과</a></li>
+              <li><a href="">음악학과</a></li>
+              <li><a href="">체육학과</a></li>
+              <li><a href="">뷰티미용학과</a></li>
+            </div>
+        
+          </div>
+
+          <div class = "block mr-44">
+            <div class = "flex">
+              <div class = "iconOne w-36 h-32 rounded-lg hover:opacity-40 mr-16 mb-8">
+                <div onclick = "myFunction1()" class="dim">상경계열</div>
+              </div>
+              <div class = "iconTwo w-36 h-32 rounded-lg hover:opacity-40 mr-16">
+                <div onclick = "myFunction2()" class="iconBtn dim">이학계열</div>
+              </div>
+              <div class = "iconThree w-36 h-32 rounded-lg hover:opacity-40 m-2">
+                <div onclick = "myFunction3()" class="iconBtn dim">의학 및 보건계열</div>
+              </div>
+            </div>
+            <div class = "flex">
+              <div class = "iconFour w-36 h-32 rounded-lg hover:opacity-40 mr-16">
+                <div onclick = "myFunction4()" class="iconBtn dim">사범계열</div>
+            </div>
+            <div class = "iconFive w-36 h-32 rounded-lg hover:opacity-40 mr-16">
+              <div onclick = "myFunction5()" class="iconBtn dim">공학계열</div>
+          </div>
+          <div class = "iconSix w-36 h-32 rounded-lg hover:opacity-40 m-2">
+            <div onclick = "myFunction6()" class="iconBtn dim">예체능계열</div>
+        </div>
+  </section>
+
+
+      <!-- 게시판 -->
+      <section class="text-gray-600 body-font">
+        <div class="container px-5 py-5 mx-auto mb-10">
+          <h1 class="text-4xl font-medium title-font text-gray-900  pt-8 pb-4 text-center font-semibold">Board</h1>
+          <div class="flex flex-wrap">
+            <div class="p-4 flex justify-center h-content w-full">
+              <div class="h-content w-10/12 bg-gray-100 p-4 rounded list-none list-inside text-2xl">
+                <li>
+                  <ul id ="ulTable">
+                    <li>
+                        <ul class="tableCate">
+                            <li>No</li>
+                            <li>제목</li>
+                            <li>작성일</li>
+                            <li>작성자</li>
+                            <li>조회수</li>
+                        </ul>
+                    </li>
+
+                    <!-- 게시물이 출력될 영역 -->
+                    {% for post in recent_posts %}
+                      <li>
+                        <ul>
+                            <li class="text-center p-3">{{ post.pk }}</li>
+                            <li class="text-center p-3 hover:underline"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+                            <li class="text-center p-3">{{ post.created_at }}</li>
+                            <li class="text-center p-3">{{ post.author }}</li>
+                            <li class="text-center p-3">{{ post.post_hit }}</li>
+                        </ul>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </li>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {% if user.is_authenticated %}
+      <div class="buttonWrap">
+        <a href="/board/create_post/"><button class="buttonWrite">글쓰기</button></a>
+      </div>
+      {% endif %}
+
+      <footer class="text-gray-600 body-font">
+        <div class="bg-green-400">
+          <div class="container px-5 py-6 mx-auto flex items-center sm:flex-row flex-col">
+            <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+              <span class="ml-3 text-xl">UNICOM</span>
+            </a>
+            <p class="text-sm text-gray-500 sm:ml-6 sm:mt-0 mt-4">© 2022 Hanseo Univ. —
+              <a href="https://twitter.com/knyttneve" rel="noopener noreferrer" class="text-gray-600 ml-1" target="_blank">Team B</a>
+            </p>
+            <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+              <a class="text-gray-500">
+                <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                  <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                </svg>
+              </a>
+              <a class="ml-3 text-gray-500">
+                <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                  <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+                </svg>
+              </a>
+              <a class="ml-3 text-gray-500">
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+                </svg>
+              </a>
+              <a class="ml-3 text-gray-500">
+                <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+                  <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+                  <circle cx="4" cy="4" r="2" stroke="none"></circle>
+                </svg>
+              </a>
+            </span>
+          </div>
+        </div>
+      </footer>
+</body>
+
+<script>
+  function myFunction1() {
+    var x = document.getElementById("myDiv1");
+    var y = document.getElementById("myDiv2");
+    var z = document.getElementById("myDiv3");
+    var w = document.getElementById("myDiv4");
+    var j = document.getElementById("myDiv5");
+    var i = document.getElementById("myDiv6");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+      y.style.display = "none";
+      z.style.display = "none";
+      w.style.display = "none";
+      j.style.display = "none";
+      i.style.display = "none";
+    } else {
+      x.style.display = "none";
+    }
+  }
+
+  function myFunction2() {
+    var x = document.getElementById("myDiv1");
+    var y = document.getElementById("myDiv2");
+    var z = document.getElementById("myDiv3");
+    var w = document.getElementById("myDiv4");
+    var j = document.getElementById("myDiv5");
+    var i = document.getElementById("myDiv6");
+    if (y.style.display === "none") {
+      x.style.display = "none";
+      y.style.display = "block";
+      z.style.display = "none";
+      w.style.display = "none";
+      j.style.display = "none";
+      i.style.display = "none";
+    } else {
+      y.style.display = "none";
+    }
+  }
+
+  function myFunction3() {
+    var x = document.getElementById("myDiv1");
+    var y = document.getElementById("myDiv2");
+    var z = document.getElementById("myDiv3");
+    var w = document.getElementById("myDiv4");
+    var j = document.getElementById("myDiv5");
+    var i = document.getElementById("myDiv6");
+    if (z.style.display === "none") {
+      x.style.display = "none";
+      y.style.display = "none";
+      z.style.display = "block";
+      w.style.display = "none";
+      j.style.display = "none";
+      i.style.display = "none";
+    } else {
+      z.style.display = "none";
+    }
+  }
+
+  function myFunction4() {
+    var x = document.getElementById("myDiv1");
+    var y = document.getElementById("myDiv2");
+    var z = document.getElementById("myDiv3");
+    var w = document.getElementById("myDiv4");
+    var j = document.getElementById("myDiv5");
+    var i = document.getElementById("myDiv6");
+    if (w.style.display === "none") {
+      x.style.display = "none";
+      y.style.display = "none";
+      z.style.display = "none";
+      w.style.display = "block";
+      j.style.display = "none";
+      i.style.display = "none";
+    } else {
+      w.style.display = "none";
+    }
+  }
+
+  function myFunction5() {
+    var x = document.getElementById("myDiv1");
+    var y = document.getElementById("myDiv2");
+    var z = document.getElementById("myDiv3");
+    var w = document.getElementById("myDiv4");
+    var j = document.getElementById("myDiv5");
+    var i = document.getElementById("myDiv6");
+    if (j.style.display === "none") {
+      x.style.display = "none";
+      y.style.display = "none";
+      z.style.display = "none";
+      w.style.display = "none";
+      j.style.display = "block";
+      i.style.display = "none";
+    } else {
+      j.style.display = "none";
+    }
+  }
+
+  function myFunction6() {
+    var x = document.getElementById("myDiv1");
+    var y = document.getElementById("myDiv2");
+    var z = document.getElementById("myDiv3");
+    var w = document.getElementById("myDiv4");
+    var j = document.getElementById("myDiv5");
+    var i = document.getElementById("myDiv6");
+    if (i.style.display === "none") {
+      x.style.display = "none";
+      y.style.display = "none";
+      z.style.display = "none";
+      w.style.display = "none";
+      j.style.display = "none";
+      i.style.display = "block";
+    } else {
+      i.style.display = "none";
+    }
+  }
+</script>
+</html>

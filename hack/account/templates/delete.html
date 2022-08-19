@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'account/css/login.css'%}">
+    <title>회원 탈퇴</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+    </style>
+        <!-- 구글 폰트 링크 -->
+        <link
+        href="https://fonts.googleapis.com/css2?family=Jua&display=swap"
+        rel="stylesheet"
+    />
+</head>
+
+<body>
+    <div class="loginArea">
+        <div class="form">
+            <form method="POST">
+            {% csrf_token %}
+                <h1 class="delete" style="color: white;">회원 탈퇴</h1>
+                <h5>정말로 탈퇴하시겠습니까?</h5>
+                <input type="submit" value="탈퇴"/>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,417 @@
+/* .board {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+} */
+
+/* .boardContainer {
+	height: 500px;
+    width: 100vw;
+} */
+
+
+/* 칠판 부분 */
+.dim {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.0);
+    color: rgba(0, 0, 0, 0.0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.iconOne {
+    background-image: url("./assets/1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-size: 110% 100%;
+}
+
+.iconTwo {
+    background-image: url("./assets/2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-size: 100% 100%;
+}
+.iconThree {
+    background-image: url("./assets/3.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-size: 100% 100%;
+}
+.iconFour {
+    background-image: url("./assets/4.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-size: 100% 100%;
+}
+.iconFive {
+    background-image: url("./assets/5.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-size: 100% 100%;
+}
+.iconSix {
+    background-image: url("./assets/6.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-size: 100% 100%;
+}
+
+.dim:hover{
+    background-color: rgba(0, 0, 0, 0.5);
+    transition-duration: 300ms;
+    /* color:#fff; */
+    /* color: black; */
+    font-size: 10px;
+    font-family: "Do Hyeon";
+    color: rgba(216,216,216,1);
+    text-shadow: 4px 5px 1px rgba(0, 0, 0, 1);
+}
+
+
+
+
+/* 하단 게시판 부분 */
+#ulTable > li:first-child > ul > li {
+    /* background-color:#c9c9c9; */
+    font-weight:bold;
+    text-align:center;
+    /* border-radius: 10px; */
+}
+
+#ulTable > li > ul {
+    clear:both;
+    padding:0px auto;
+    position:relative;
+    min-width:40px;
+    height: 30px;
+/*     border-bottom:1px solid silver; */
+}
+
+.tableCate {
+    border-radius: 20px;
+    background-color: silver;
+
+}
+#ulTable > li > ul > li { 
+    float:left;
+    font-size:10pt;
+    vertical-align:baseline;
+    font-family: 'Noto Sans KR', sans-serif;
+}    
+
+#ulTable > li > ul > li:first-child               {width:10%;} /*No 열 크기*/
+#ulTable > li > ul > li:first-child +li           {width:45%;} /*제목 열 크기*/
+#ulTable > li > ul > li:first-child +li+li        {width:20%;} /*작성일 열 크기*/
+#ulTable > li > ul > li:first-child +li+li+li     {width:15%;} /*작성자 열 크기*/
+#ulTable > li > ul > li:first-child +li+li+li+li{width:10%;} /*조회수 열 크기*/
+
+
+/* 버튼 */
+.buttonWrap{
+    display: flex;
+    align-items: right;
+    justify-content: right;
+    padding-right: 290px;
+}
+
+.buttonWrite{ 
+    width: 140px;
+    height: 45px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    margin: 20px;
+    }
+
+    .buttonWrite:hover {
+        background-color: #40ba35cb;
+        box-shadow: 0px 10px 10px rgba(20, 116, 78, 0.4);
+        color: #fff;
+        transform: translateY(-1px);
+    }
+
+    .buttonLike{
+        width: 140px;
+        height: 45px;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 2.5px;
+        font-weight: 500;
+        color: #000;
+        background-color: #fff;
+        border: none;
+        border-radius: 45px;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease 0s;
+        cursor: pointer;
+        outline: none;
+        margin-top: 20px;
+        }
+
+        .buttonLike:hover {
+            background-color: #40ba35cb;
+            box-shadow: 0px 10px 10px rgba(20, 116, 78, 0.4);
+            color: #fff;
+            transform: translateY(-1px);
+        }
+    
+    .buttonMywrite{
+        width: 140px;
+        height: 45px;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 2.5px;
+        font-weight: 500;
+        color: #000;
+        background-color: #fff;
+        border: none;
+        border-radius: 45px;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease 0s;
+        cursor: pointer;
+        outline: none;
+        margin-top: 20px;
+        margin-left: 20px;
+        }
+
+        .buttonMywrite:hover {
+            background-color: #40ba35cb;
+            box-shadow: 0px 10px 10px rgba(20, 116, 78, 0.4);
+            color: #fff;
+            transform: translateY(-1px);
+        }
+
+        .upload {
+            display: flex;
+            align-items: right;
+            justify-content: right;
+            padding-right: 150px;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        .upload .write_post{
+            font-size: large;
+        }
+        
+
+/* 게시판 페이지 넘어가기 */
+.paging {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    list-style: none;
+}
+
+.paging li a{
+    margin: 10px;
+}
+
+
+/* 아이콘 눌렀을 때 넘어가는 페이지 */
+.major_detail {
+    padding-right: 100px;
+}
+
+.more_detail {
+    font-family: 'Do Hyeon', sans-serif;
+    text-align: center;
+    font-size: xx-large;
+    margin: 50px;
+    font-weight: bold;
+    color: #fff;
+
+}
+
+.more_detail a {
+    margin: 30px;
+}
+
+.more_detail a:hover {
+    color: #000;
+}
+
+
+
+
+/* 글작성하는 페이지 */
+.BoardDetailWrapper{
+    /* border: 1px solid black; */
+    position: relative;
+    width: 80%;
+    height: 70%;
+    margin: 0px auto;
+    margin-top: 30px;
+    
+}
+.BoardDetailHeader{
+    width: auto;
+    min-height: 60px;
+}
+
+.BoardDetailHeader > h1{
+    display: inline;
+    margin-top: 30px;
+    margin-left: 20px;
+}
+
+.BoardDetail{
+/*     border: 1px solid black; */
+    min-height: 80%;
+    padding: 10px;
+    border-radius: 5PX;
+/*     background-color: #f3f4f6; */
+}
+
+.BoardDetail > form .title{
+    border: 3px solid #34d399;
+    width: 98.6%;
+    /* min-height: 80px; */
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 8px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.BoardDetail .write_text{
+    border: 3px solid #34d399;
+    border-radius: 8px;
+    font-size: 20px;
+    width: 100%;
+    height: 40vw;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+
+/* 전체게시판 보드 */
+.boardImg_total_board {
+	width: 55%;
+    height: 200px;
+    margin: 0 auto;
+    padding-top: 50px;
+    padding-left: 50px;
+    justify-content:space-around;
+    background-image: url("./assets/backBoard.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
+    display: flex;
+}
+
+/* 전체게시판 페이징 */
+.paging_total_board {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.paging_total_board li a{
+    margin: 10px;
+}
+
+
+
+
+.searchBox {
+    display:flex;
+    justify-content: center;
+    align-items:flex-end;
+}
+
+.search {
+    position: relative;
+    width: 300px;
+  }
+  
+  input {
+    width: 100%;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+  
+  img {
+    position : absolute;
+    width: 17px;
+    top: 10px;
+    right: 12px;
+    margin: 0;
+  }
+
+
+
+.subCateBtn {
+    background-color: rgba(216, 216, 216, 0.258);
+    height: 240px;
+    width: 200px;
+    text-align: center;
+    display: block;
+    border-radius: 5px;
+    padding: 10px;
+    list-style: none;
+    margin: 10px;
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 25px;
+    color: white;
+    display: none;
+}
+
+#myDiv1 > li > a:hover{
+    text-decoration: underline;
+}
+
+#myDiv2 > li > a:hover{
+    text-decoration: underline;
+}
+
+#myDiv3 > li > a:hover{
+    text-decoration: underline;
+}
+
+#myDiv4 > li > a:hover{
+    text-decoration: underline;
+}
+
+#myDiv5 > li > a:hover{
+    text-decoration: underline;
+}
+
+#myDiv6 > li > a:hover{
+    text-decoration: underline;
+}
+
+.boardImg_total{
+    width: 83.33333%;
+    height: 150px;
+    margin: 0 auto;
+    padding-top: 50px;
+    padding-left: 50px;
+    justify-content:space-around;
+    background-image: url("./assets/backBoard.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
+    display: flex;
+}

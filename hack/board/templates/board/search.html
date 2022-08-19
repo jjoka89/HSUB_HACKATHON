@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOTAL BOARD</title>
+    <link href="{% static 'board/css/index_style.css' %}" rel="stylesheet">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+        .boardImg {
+        width: 83.33333%;
+            height: 400px;
+            margin: 0 auto;
+            padding-top: 50px;
+            padding-left: 50px;
+            justify-content:space-around;
+            background-image: url("{% static 'board/assets/backBoard.png' %}");
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: 100% 100%;
+            display: flex;
+        }
+        .iconOne {
+        background-image: url("{% static 'board/assets/1.png' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-size: 110% 100%;
+    }
+    
+    .iconTwo {
+        background-image: url("{% static 'board/assets/2.png' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-size: 100% 100%;
+    }
+    .iconThree {
+        background-image: url("{% static 'board/assets/3.png' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-size: 100% 100%;
+    }
+    .iconFour {
+        background-image: url("{% static 'board/assets/4.png' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-size: 100% 100%;
+    }
+    .iconFive {
+        background-image: url("{% static 'board/assets/5.png' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-size: 100% 100%;
+    }
+    .iconSix {
+        background-image: url("{% static 'board/assets/6.png' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-size: 100% 100%;
+    }
+    .boardImg_total{
+        width: 83.33333%;
+        height: 150px;
+        margin: 0 auto;
+        padding-top: 50px;
+        padding-left: 50px;
+        justify-content:space-around;
+        background-image: url("{% static 'board/assets/backBoard.png' %}");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 100% 100%;
+        display: flex;
+    }
+
+
+    </style>
+</head>
+<body>
+    <header class="text-gray-600 body-font">
+    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+    <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+        <span class="ml-3 text-xl"><a href="{% url 'mainpage'%}">UNICOM</a></span></a>
+    <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+        {% if request.user.is_authenticated %}
+        <a class="mr-5 hover:text-gray-900" href="{% url 'logout' %}">LOGOUT</a>
+        <a class="mr-5 hover:text-gray-900" href="{% url 'myPage' %}">MYPAGE</a>
+        {%else%}
+        <a class="mr-5 hover:text-gray-900" href="{% url 'login' %}">LOGIN</a>
+        <a class="mr-5 hover:text-gray-900" href="{% url 'join' %}">JOIN</a>
+        {%endif%}
+
+    </nav>
+    </div>
+    </header>
+    <section class="min-h-screen">
+    <section class="text-gray-600 body-font">
+
+        <div class="boardImg_total">
+            <h1 id="majorTitle">검색결과</h1>
+            {% comment %} <div class="searchBox mg-0 mg-auto w-2/5">
+                <div class="search mb-16 mr-20">
+                <form class="form-inline my-2 my-lg-0" action="{% url 'search' %}" method="post">
+                    {% csrf_token %}
+                    <input class="form-control mr-sm-2" type="search" name="q" value="{{q}}">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png"></button>
+                </form>
+                </div>
+            </div> {% endcomment %}
+        </div>
+    </section>
+
+<!-- 게시판 -->
+    <section class="text-gray-600 body-font">
+        <div class="container px-5 py-5 mx-auto mb-10">
+            <h1 class="text-4xl font-medium title-font text-gray-900  pt-8 pb-4 text-center font-semibold">{{category}}</h1>
+            <div class="flex flex-wrap">
+                <div class="p-4 flex justify-center h-content w-full">
+                    <div class="h-content w-10/12 bg-gray-100 p-4 rounded list-none list-inside text-2xl">
+                <li>
+                <ul id ="ulTable">
+                <li>
+                    <ul class="tableCate">
+                        <li>No</li>
+                        <li>제목</li>
+                        <li>작성일</li>
+                        <li>작성자</li>
+                        <li>조회수</li>
+                    </ul>
+                </li>
+
+                <!-- 게시물이 출력될 영역 -->
+                {% if not blogs %}
+
+                <h1>검색 결과가 없습니다</h1>
+
+                {% else %}
+                {% for blog in blogs.all %}
+                        <li>
+                            <ul>
+                                <li class="text-center p-3">{{ blog.pk }}</li>
+                                <li class="text-center p-3 hover:underline"><a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></li>
+                                <li class="text-center p-3">{{ blog.created_at }}</li>
+                                <li class="text-center p-3">{{ blog.author }}</li>
+                                <li class="text-center p-3">0</li>
+                            </ul>
+                        </li>
+                {% endfor %}
+                {% endif %}
+                </ul>
+            </li>
+            </div>
+        </div>
+        </div>
+    </div>
+</section>
+
+</section>
+
+
+      
+      
+
+      <footer class="text-gray-600 body-font">
+        <div class="bg-green-400">
+          <div class="container px-5 py-6 mx-auto flex items-center sm:flex-row flex-col">
+            <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+              <span class="ml-3 text-xl">UNICOM</span>
+            </a>
+            <p class="text-sm text-gray-500 sm:ml-6 sm:mt-0 mt-4">© 2022 Hanseo Univ. —
+              <a href="https://twitter.com/knyttneve" rel="noopener noreferrer" class="text-gray-600 ml-1" target="_blank">Team B</a>
+            </p>
+            <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+              <a class="text-gray-500">
+                <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                  <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                </svg>
+              </a>
+              <a class="ml-3 text-gray-500">
+                <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                  <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+                </svg>
+              </a>
+              <a class="ml-3 text-gray-500">
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+                </svg>
+              </a>
+              <a class="ml-3 text-gray-500">
+                <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+                  <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+                  <circle cx="4" cy="4" r="2" stroke="none"></circle>
+                </svg>
+              </a>
+            </span>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+  </body>
+</html>
+
+{% comment %} <div class="BoardDetailWrapper">
+    <div class="BoardDetailHeader"> {% endcomment %}
+        {% comment %} <input type="text" name = "q" value = "{{q}}" class="search" />
+    
+        <span class="material-symbols-outlined"> search </span>
+        <button class="btn btn-sm" type="submit" id="search_btn">검색</button> {% endcomment %}
+    
+    {% comment %} <a href = "/">게시판 돌아가기</a>
+    </div>
+{% block content %} {% endcomment %}
+{% comment %} 
+    
+
+        
+        <div class="container"> 
+            <div class="card">
+                <div class="card-body">
+                    <h2><a href="{{ blog.get_absolute_url }}" class="postTitle">{{ blog.title }}</a></h2>
+                    <p class="content">{{ blog.content }}</p>
+                    
+                </div>
+            </div>
+        </div>
+        <br>
+        {% endfor %}
+
+    
+
+{% endblock %} {% endcomment %}

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="./myPageStyle.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'account/css/myPageStyle.css'%}">
+
+</head>
+<body>
+<header class="text-gray-600 body-font">
+    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+    <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+        <span class="ml-3 text-xl"><a href="{% url 'mainpage'%}">UNICOM</a></span></a>
+    <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+        {% if request.user.is_authenticated %}
+        <a class="mr-5 hover:text-gray-900" href="{% url 'logout' %}">LOGOUT</a>
+        <a class="mr-5 hover:text-gray-900" href="{% url 'myPage' %}">MYPAGE</a>
+        {%else%}
+        <a class="mr-5 hover:text-gray-900" href="{% url 'login' %}">LOGIN</a>
+        <a class="mr-5 hover:text-gray-900" href="{% url 'join' %}">JOIN</a>
+        {%endif%}
+    </nav>
+    </div>
+</header>
+
+  <section class = "flex justify-center">
+    <div class = "flex w-10/12 bg-green-400 rounded-2xl p-10 justify-start">
+      <div class = "bg-gray-200 rounded-2xl p-10 m-2.5">
+        <form method="post" enctype="multipart/form-data">
+          <div class = "flex justify-center">
+            <label for="chooseFile">
+              <img class = "w-48 h-48"src="./assets/1.png" />
+            </label>
+          </div>
+          <input class = "m-1 bg-gray-100" type="file" name="chooseFile" accept="image/*" onchange="loadFile(this)"/>
+        </form>
+
+        <div class = "flex justify-end">
+          <button class = "mainFont text-2xl m-1 mt-7 w-24 bg-gray-100 p-1 rounded-md">사진 등록</button>
+        </div>
+      </div>
+      <div class = "mainFont bg-gray-200 w-2/3 rounded-2xl p-10 m-2.5 leading-10 text-2xl">
+        <div class = "flex m-2 bg-gray-100 p-1 pl-2 rounded-2xl text-black">
+          <p>{{user.name}}</p>
+        </div>
+        <div class = "flex m-2 bg-gray-100 p-1 pl-2 rounded-2xl text-black">
+          <p>{{user.school}}</p>
+        </div>
+        <div class = "flex m-2 bg-gray-100 p-1 pl-2 rounded-2xl text-black">
+          <p>{{user.major}}</p>
+        </div>
+        <div class = "flex m-2 bg-gray-100 p-1 pl-2 rounded-2xl text-black">
+          <p>{{user.grade}}</p>
+        </div>
+        <div class = "flex m-2 bg-gray-100 p-1 pl-2 rounded-2xl text-black">
+          <p>{{user.email}}</p>
+        </div>
+        <div class = "flex justify-end">
+          <button class = "m-1 bg-gray-100 p-1 rounded-md">회원 정보 수정</button>
+          <button class = "m-1 bg-gray-100 p-1 rounded-md"><a href="{% url 'delete' %}">회원 탈퇴</a></button>
+        </div>
+      </div>
+    </div>
+  </section>
+      <!-- 게시판 -->
+      <section class="text-gray-600 body-font">
+        <div class="container px-5 py-5 mx-auto mb-10">
+          <h1 class="text-4xl font-medium title-font text-gray-900  pt-8 pb-4 text-center font-semibold">내가 쓴 글</h1>
+          <div class="flex flex-wrap">
+            <div class="p-4 flex justify-center h-content w-full">
+              <div class="h-content w-10/12 bg-gray-100 p-4 rounded list-none list-inside text-2xl">
+                <li>
+                  <ul id ="ulTable">
+                    <li>
+                        <ul class="tableCate">
+                            <li>No</li>
+                            <li>제목</li>
+                            <li>작성일</li>
+                            <li>작성자</li>
+                            <li>조회수</li>
+                        </ul>
+                    </li>
+
+                    <!-- 게시물이 출력될 영역 -->
+                    {% for post in posts %}
+                      <li>
+                        <ul>
+                            <li class="text-center p-3">{{ post.pk }}</li>
+                            <li class="text-center p-3 hover:underline"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+                            <li class="text-center p-3">{{ post.created_at }}</li>
+                            <li class="text-center p-3">{{ post.author }}</li>
+                            <li class="text-center p-3">{{ post.post_hit }}</li>
+                        </ul>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </li>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="text-gray-600 body-font">
+        <div class="container px-5 py-5 mx-auto mb-10">
+          <h1 class="text-4xl font-medium title-font text-gray-900  pt-8 pb-4 text-center font-semibold">좋아요한 글</h1>
+            <div class="flex flex-wrap">
+              <div class="p-4 flex justify-center h-96 w-full">
+                <div class="h-full w-10/12 bg-gray-100 p-4 rounded list-none list-inside text-2xl">
+                  <li>
+                    <ul id ="ulTable">
+                      <li>
+                        <ul class="tableCate">
+                          <li>No</li>
+                          <li>제목</li>
+                          <li>작성일</li>
+                          <li>작성자</li>
+                          <li>조회수</li>
+                        </ul>
+                      </li>
+    
+                        <!-- 게시물이 출력될 영역 -->
+                        {% for likes in likes %}
+                        <li>
+                          <ul>
+                            <li class="text-center p-3">{{ likes.pk }}</li>
+                            <li class="text-center p-3 hover:underline"><a href="{{ likes.get_absolute_url }}">{{ likes.title }}</a></li>
+                            <li class="text-center p-3">{{ likes.created_at }}</li>
+                            <li class="text-center p-3">{{ likes.author }}</li>
+                            <li class="text-center p-3">{{ likes.post_hit }}</li>
+                          </ul>
+                          
+                        </li>
+                        {% endfor %}
+                          
+                          
+                      </ul>
+                    </li>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+0
+
+      <footer class="text-gray-600 body-font">
+        <div class="bg-green-400">
+          <div class="container px-5 py-6 mx-auto flex items-center sm:flex-row flex-col">
+            <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+              <span class="ml-3 text-xl">UNICOM</span>
+            </a>
+            <p class="text-sm text-gray-500 sm:ml-6 sm:mt-0 mt-4">© 2022 Hanseo Univ. —
+              <a href="https://twitter.com/knyttneve" rel="noopener noreferrer" class="text-gray-600 ml-1" target="_blank">Team B</a>
+            </p>
+            <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+              <a class="text-gray-500">
+                <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                  <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                </svg>
+              </a>
+              <a class="ml-3 text-gray-500">
+                <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                  <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+                </svg>
+              </a>
+              <a class="ml-3 text-gray-500">
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+                </svg>
+              </a>
+              <a class="ml-3 text-gray-500">
+                <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+                  <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+                  <circle cx="4" cy="4" r="2" stroke="none"></circle>
+                </svg>
+              </a>
+            </span>
+          </div>
+        </div>
+      </footer>
+</body>
+</html>

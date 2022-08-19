@@ -1,0 +1,174 @@
+/*마이 페이지 css*/
+.main{
+    height: 420px;
+    width: 1141px;
+    margin: auto;
+    margin-top: 20px;
+}
+h2{
+    font-size: 30px;
+    padding-bottom: 10px;
+}
+.mypage{
+    border: 1px solid #a4f34a;
+    display:flex;
+    height: 320px;
+    width: 1140px;
+    margin: auto;
+    border-radius: 10px;
+    border-width: 3px;
+    padding-bottom: 9px;
+}
+
+.right_item_name, .left_item_name{
+    border: 1px solid black;
+    background-color: rgb(226, 226, 226);
+    border-radius: 10px;
+    margin: 15px;
+    width: 350px;
+    height: 25px;
+    padding: 10px;
+    font-size: 22px;
+    flex:1;
+}
+
+
+.profil{
+    text-align: center;
+    flex:1;
+    /* background-color: aqua; */
+    border-radius: 20px;
+    margin-top: 15px;
+}
+
+.profil_img{
+    width: 250px;
+    height: 250px;
+    border-radius: 10%;
+}
+.center{
+    width: 300px;
+}
+
+.info_name{
+    display: inline-block;
+    width: 220px;
+    height: 20px;
+    margin-left: 20px;
+}
+
+.info_name_nick{
+    display: inline-block;
+    width: 200px;
+    height: 20px;
+    margin-left: 20px;
+}
+
+
+/*자격증, 게시글 css*/
+.side{
+    height: 350px;
+    width: 1145px;
+    margin: auto;
+    font-size: 30px;
+}
+
+.license, .post{
+    border: 1px solid rgb(0, 0, 0);
+    height: 250px;
+    width: 1140px;
+    margin: auto;
+    border-radius: 10px;
+    border-width: 3px;
+}
+
+
+
+/*사진*/
+.container_img {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-upload {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+}
+
+label {
+    cursor: pointer;
+    font-size: 1em;
+    height: 240px;
+}
+
+
+.fileContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fileInput {
+    display: flex;
+    align-items: center;
+    border-bottom: solid 2px black;
+    width: 60%;
+    height: 30px;
+}
+
+#fileName {
+    margin-left: 5px;
+}
+
+.buttonContainer {
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    background-color: black;
+    color: white;
+    border-radius: 30px;
+    padding: 10px;
+    font-size: 0.8em;
+    cursor: pointer;
+    float: right;
+}
+
+.image-show {
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 300px;
+    height: 300px;
+}
+
+#chooseFile {
+    visibility: hidden;
+}
+
+.info{
+    cursor: pointer;
+    text-align: center;
+}
+
+.plus{
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.sub_name{
+    display: flex;
+    justify-content: space-between;
+}

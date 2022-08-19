@@ -1,0 +1,152 @@
+* { 
+    margin:0;
+    padding:0;
+    text-decoration: none;
+    list-style: none;
+    font-family: 'Jua', sans-serif;
+}
+body {
+    width: 100vw;
+}
+
+/*header*/
+.logo{
+    width: 50px;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+.All_header{
+    height: 77px;
+    background-color: rgb(78, 194, 84);
+    border-radius: 0px 0px 10px 10px;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+    font-family: inherit;
+    font-size: x-large;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+}
+  
+.dropdown-menu {
+    position: absolute;
+    left: 0;
+    background-color: rgba(212, 245, 174, 100%);
+    padding: .75rem;
+    border-radius: .25rem;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .1);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+}
+
+.dropdown.active > .link,
+.link:hover {
+  color: white;
+}
+
+.All_menu {
+    display: flex;
+    width:100vw;
+    /* align-items: baseline; */
+    /* left: 50%; */
+    z-index: 2;
+    position: absolute;
+    line-height: 77px;
+    gap: 5rem;
+    justify-content: center;
+    
+  }
+
+.LogBtn {
+    position: absolute;
+    right: 10px;
+}
+
+.LogBtn a {
+    margin: 10px;
+}
+
+.dropdown.active > .link + .dropdown-menu {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  
+  .information-grid {
+    display: grid;
+    grid-template-columns: repeat(5, max-content);
+    gap: 3rem;
+  }
+  
+  .dropdown-links {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+  }
+  
+  .login-form > input {
+    margin-bottom: .5rem;
+  }
+  /* 로그인 부분 css */
+  .Inout{
+    display: flex;
+    z-index: 1;
+    position: absolute;
+    line-height: 77px;
+    margin-left: 1100px;
+    gap: 2rem;
+    max-width: fit-content;
+  }
+
+/* .cateBtn {
+    display: flex;
+
+} */
+
+.majorBtn {
+    background-color: rgb(78, 194, 84);
+    border: none;
+}
+
+/*body*/
+.contentsCon {
+    min-height: 300px;
+}
+
+/*footer*/
+.footer{
+    padding: 30px;
+    color: black;
+    /* border-top: 1px solid gray; */
+
+    text-align: center;
+    background-color: rgb(78, 194, 84);
+}
+
+.footer .social{
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 0px;
+  padding-top: 10px;
+}
+
+.footer .copyright{
+    text-align: center;
+    padding-top: 24px;
+    font-weight: 500;
+    opacity: 0.8;
+    font-size: 16px;
+  }
+
+.footer .social i:hover{
+    transform: scale(1.5);
+    width:20px;
+}
